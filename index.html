@@ -33,8 +33,13 @@
   <style>
     body {
       font-family: 'Montserrat', sans-serif;
-      background: radial-gradient(circle at center, #0d0d0d, #1a1a1a 80%);
       margin: 0; padding: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top, #2a2a2a 0%, #0d0d0d 80%);
+      background-attachment: fixed;
       color: #fff;
       text-align: center;
     }
@@ -42,31 +47,51 @@
     .container {
       max-width: 480px;
       margin: 0 auto;
-      padding: 60px 20px;
+      padding: 40px 20px;
     }
 
+    /* Logo circular estilo casino */
     .logo {
-      max-width: 320px;
+      width: 220px;
+      height: 220px;
       margin: 0 auto 30px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #FFD700, #b8860b);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 25px rgba(255,215,0,0.8), 0 0 50px rgba(255,165,0,0.6);
+      animation: glow 3s infinite alternate;
+      overflow: hidden;
+    }
+    .logo img {
+      width: 85%;
+      height: 85%;
+      border-radius: 50%;
+      object-fit: contain;
+    }
+    @keyframes glow {
+      from { box-shadow: 0 0 15px rgba(255,215,0,0.5); }
+      to   { box-shadow: 0 0 40px rgba(255,215,0,0.9); }
     }
 
     h1 {
       font-size: 28px;
       font-weight: 800;
       color: #FFD700;
-      text-shadow: 0 0 10px rgba(255,215,0,0.8), 0 0 20px rgba(255,165,0,0.6);
-      margin-bottom: 20px;
+      text-shadow: 0 0 10px rgba(255,215,0,0.8), 0 0 25px rgba(255,140,0,0.6);
+      margin-bottom: 15px;
     }
 
     .verified {
       font-size: 20px;
       font-weight: 700;
       color: #ffdf5a;
-      margin-bottom: 35px;
-      text-shadow: 0 0 10px rgba(255,223,90,0.8);
+      margin-bottom: 30px;
+      text-shadow: 0 0 15px rgba(255,223,90,0.8);
     }
 
-    /* Botón estilo dorado premium */
+    /* Botón dorado metálico */
     .cta-btn {
       position: relative;
       padding: 20px 40px;
@@ -76,18 +101,17 @@
       color: #000;
       background: linear-gradient(180deg, #FFD700 0%, #E6AC00 100%);
       border: 2px solid #b8860b;
-      border-radius: 12px;
+      border-radius: 15px;
       cursor: pointer;
-      box-shadow: 0 5px 20px rgba(255,215,0,0.6);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 8px 25px rgba(255,215,0,0.7);
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
       overflow: hidden;
     }
     .cta-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 25px rgba(255,215,0,0.9);
+      transform: scale(1.08);
+      box-shadow: 0 12px 35px rgba(255,215,0,1);
     }
-
-    /* Brillo que pasa por encima */
+    /* Brillo animado */
     .cta-btn::after {
       content: "";
       position: absolute;
@@ -118,13 +142,14 @@
       font-weight: 800;
       margin: 8px 0;
       color: #ffdf5a;
+      text-shadow: 0 0 8px rgba(255,223,90,0.6);
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- Logo -->
-    <img src="logo.jpeg" alt="Lion Play1" class="logo">
+    <!-- Logo circular -->
+    <div class="logo"><img src="logo.png" alt="Lion Play1"></div>
 
     <h1>¡TOCÁ EL BOTÓN Y RECLAMÁ TU BONO!</h1>
     <p class="verified">🟡 PLATAFORMA VERIFICADA ✅</p>
