@@ -36,48 +36,59 @@
       min-height: 100vh;
       font-family: 'Montserrat', sans-serif;
       display: flex; align-items: center; justify-content: center;
-      background: url('casino-bg.jpg') no-repeat center center / cover;
-      background-attachment: fixed;
+      /* 🎨 Degradado inspirado en la foto de Lion Play */
+      background: linear-gradient(135deg, #1b0033, #3a0072, #8b008b, #ff8c00, #ffd700);
+      background-size: 400% 400%;
+      animation: gradientMove 15s ease infinite;
+      color: #fff;
       text-align: center;
+    }
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .container {
-      max-width: 520px;
+      max-width: 500px;
+      margin: 0 auto;
       padding: 40px 20px;
-      background: rgba(0,0,0,0.65);
+      background: rgba(0,0,0,0.6);
       border-radius: 15px;
-      box-shadow: 0 0 30px rgba(0,0,0,0.8);
+      box-shadow: 0 0 25px rgba(0,0,0,0.7);
     }
 
-    /* Efecto dorado metálico estilo logo */
-    .gold-text {
-      font-size: 38px;
+    .logo {
+      width: 180px;
+      margin-bottom: 20px;
+    }
+
+    .gold-title {
+      font-size: 34px;
       font-weight: 900;
       text-transform: uppercase;
       background: linear-gradient(180deg, #FFD700 0%, #E6AC00 50%, #B8860B 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      color: #FFD700;
       text-shadow: 
         2px 2px 4px #000,
         0 0 15px rgba(255,215,0,0.8),
         0 0 30px rgba(255,140,0,0.6);
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
 
     .verified {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 700;
       color: #FFD700;
-      text-shadow: 0 0 10px rgba(255,215,0,0.9);
-      margin-bottom: 30px;
+      margin-bottom: 25px;
+      text-shadow: 0 0 12px rgba(255,215,0,0.9);
     }
 
-    /* Botón metálico */
     .cta-btn {
       display: inline-block;
-      padding: 20px 45px;
-      font-size: 22px;
+      padding: 18px 40px;
+      font-size: 20px;
       font-weight: 900;
       text-transform: uppercase;
       border-radius: 12px;
@@ -110,7 +121,6 @@
       100% { left: 200%; }
     }
 
-    /* Footer */
     .footer p, .footer h2 {
       color: #FFD700;
       font-weight: 700;
@@ -124,10 +134,10 @@
 <body>
   <div class="container">
     <!-- Logo -->
-    <img src="logo.png" alt="Lion Play1" style="width:180px; margin-bottom:20px;">
+    <img src="logo.png" alt="Lion Play1" class="logo">
 
-    <!-- Título dorado 3D -->
-    <div class="gold-text">¡Reclama tu bono ahora!</div>
+    <!-- Título -->
+    <div class="gold-title">¡Reclamá tu bono ahora!</div>
     <div class="verified">🟡 PLATAFORMA VERIFICADA ✅</div>
 
     <!-- Botón -->
