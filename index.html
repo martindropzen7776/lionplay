@@ -150,14 +150,13 @@
   function openRandomLink() {
     const number = pickNumber();
     const ref = "LD_" + Math.random().toString(36).substring(2,8).toUpperCase();
-    const user = "usuario_demo"; // ⚡️ si querés, acá se puede capturar un input de usuario
 
-    const msg = `Hola, quiero registrarme.\nMi usuario deseado es: ${user}\nMi código promocional es: ${ref}`;
+    const msg = `Hola, quiero registrarme.\nMi código promocional es: ${ref}`;
     const url = `https://wa.me/${number}?text=${encodeURIComponent(msg)}&ref=${encodeURIComponent(ref)}`;
 
     // 🎯 Tracking en Meta Pixel
     if (typeof fbq === "function") {
-      fbq("track", "Lead", { destino:number, user, ref });
+      fbq("track", "Lead", { destino:number, ref });
     }
 
     // 🎯 Tracking en GA4
@@ -166,7 +165,6 @@
         event_category: "engagement",
         event_label: "WhatsApp",
         value: 1,
-        user: user,
         ref: ref,
         number: number
       });
