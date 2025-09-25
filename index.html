@@ -6,24 +6,23 @@
   <title>Lion Play 1</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
 
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1378429319722640');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1378429319722640&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1378429319722640'); // tu Pixel ID
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1378429319722640&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
 
   <style>
     body {
@@ -140,19 +139,17 @@ src="https://www.facebook.com/tr?id=1378429319722640&ev=PageView&noscript=1"
   function openRandomLink() {
     // Lista de números random
     const numbers = [
-
-'5492664151120',
-'5492664308320',
-'5492664308396',
-'5492664308321'
-      
+      '5492664151120',
+      '5492664308320',
+      '5492664308396',
+      '5492664308321'
     ];
 
-    // Pick random number
     const randomNumber = numbers[Math.floor(Math.random() * numbers.length)];
-
-    // Armar link dinámico con ref
     const link = `https://wa.me/${randomNumber}?text=Hola%2C%20quiero%20registrarme%2C%20mi%20c%C3%B3digo%20promocional%20es%3A%20${ref}`;
+
+    // Disparo de evento en el Pixel
+    fbq('track', 'Lead', {ref_code: ref, number: randomNumber});
 
     window.location.href = link;
   }
