@@ -143,7 +143,9 @@
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(param);
   }
-  const ref = getParam('ref') || getParam('clickid') || 'SIN_REF';
+
+  // Usa ref dinámico o placeholder {{ref}}
+  const ref = getParam('ref') || getParam('clickid') || '{{ref}}';
 
   function openRandomLink() {
     // Lista de números random
