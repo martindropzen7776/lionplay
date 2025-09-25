@@ -22,9 +22,8 @@
   <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=1378429319722640&ev=PageView&noscript=1"
   /></noscript>
-  <!-- End Meta Pixel Code -->
 
-  <!-- Google tag (gtag.js) -->
+  <!-- Google tag (GA4) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-2FVBYC2QE1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -138,38 +137,42 @@
   </div>
 
 <script>
-  // Captura ?ref= o ?clickid= desde la URL
-  function getParam(param) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(param);
-  }
-
-  // Usa ref dinámico o placeholder {{ref}}
-  const ref = getParam('ref') || getParam('clickid') || '{{ref}}';
-
-  function openRandomLink() {
-    // Lista de números random
+  function pickNumber() {
     const numbers = [
       '5492664151120',
       '5492664308320',
       '5492664308396',
       '5492664308321'
     ];
+    return numbers[Math.floor(Math.random() * numbers.length)];
+  }
 
-    const randomNumber = numbers[Math.floor(Math.random() * numbers.length)];
-    const link = `https://wa.me/${randomNumber}?text=Hola%2C%20quiero%20registrarme%2C%20mi%20c%C3%B3digo%20promocional%20es%3A%20${ref}`;
+  function openRandomLink() {
+    const number = pickNumber();
+    const ref = "LD_" + Math.random().toString(36).substring(2,8).toUpperCase();
+    const user = "usuario_demo"; // ⚡️ si querés, acá se puede capturar un input de usuario
 
-    // Evento en Meta Pixel
-    fbq('track', 'Lead', {ref_code: ref, number: randomNumber});
+    const msg = `Hola, quiero registrarme.\nMi usuario deseado es: ${user}\nMi código promocional es: ${ref}`;
+    const url = `https://wa.me/${number}?text=${encodeURIComponent(msg)}&ref=${encodeURIComponent(ref)}`;
 
-    // Evento en GA4
-    gtag('event', 'whatsapp_click', {
-      event_category: 'engagement',
-      event_label: ref,
-      value: 1
-    });
+    // 🎯 Tracking en Meta Pixel
+    if (typeof fbq === "function") {
+      fbq("track", "Lead", { destino:number, user, ref });
+    }
 
-    window.location.href = link;
+    // 🎯 Tracking en GA4
+    if (typeof gtag === "function") {
+      gtag("event", "generate_lead", {
+        event_category: "engagement",
+        event_label: "WhatsApp",
+        value: 1,
+        user: user,
+        ref: ref,
+        number: number
+      });
+    }
+
+    window.location.href = url;
   }
 </script>
 </body>
